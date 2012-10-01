@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Environment Server Visualization</title>
+</head>
+<body>
+
+<script type = "text/javascript">
+<!-- hide me from older browsers
+$(window).load(function () {
+    var uuid = "";
+    var jqxhr = $.post("clients",
+     { client: { name: "visualization" } }
+    )
+    .success(function(data) {
+        run_client(data.uuid);
+    })
+    .error(function(data) {
+        if (data.status == 409) {
+            $.get("clients")
+            .success(function(data) {
+                if (data instanceof Array) {
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].name == "visualization") {
+                            run_client(data[i].uuid);
+                        }
+                    }
+                }
+            })
+        }
+    });
+});
+function run_client(uuid) {
+    url = "clients/" + uuid + "/sensors/meta";
+    //alert("getting: " + url);
+    $.get(url)
+    .success(function(data) {
+        alert("success " + data);
+    })
+    .error(function(data) {
+        alert("error " + data.status);
+    })
+}
+-->
+</script>
+<div id="stuff"></div>
+</body>
+</html>

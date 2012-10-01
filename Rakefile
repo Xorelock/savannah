@@ -5,3 +5,10 @@
 require File.expand_path('../config/application', __FILE__)
 
 Savannah::Application.load_tasks
+
+task :agentrun do
+  require 'lib/aies'
+  myagent = Aies::Agent.new("test", "http://localhost:3030")
+  puts myagent.inspect
+  puts "and done"
+end
