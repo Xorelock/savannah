@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
     client_info = params[:client]
     client = @server.add_client(client_info[:name])
     return render_error(:conflict) unless client
-    render :json => client
+    render :json => client, :status => :created
   end
   def show
     client = @server.get_clients[params[:id]]
